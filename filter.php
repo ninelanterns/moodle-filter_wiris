@@ -83,7 +83,7 @@ class filter_wiris extends moodle_text_filter {
         // MathJax and MathML
         // Not filter if MathJax filter order < WIRIS filter order.
         if ($n1 !== false && $wirisfilter = $DB->get_record('filter_active', array('filter' => 'wiris'))) {
-            if ($mathjaxfilter = $DB->get_record('filter_active', array('filter' => 'mathjaxloader', 'active' => '1'))) {
+            if ($mathjaxfilter = $DB->get_record('filter_active', array('filter' => 'mathjaxloader', 'active' => '1', 'contextid' => 1))) {
                 if ($mathjaxfilter->sortorder < $wirisfilter->sortorder) {
                     return $text;
                 }
