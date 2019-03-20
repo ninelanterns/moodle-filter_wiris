@@ -1,6 +1,16 @@
 <?php
 // ${license.statement}
 
+//-------------------------------------------------------------------------------------------------
+//-----BEGIN CORE HACK-----------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+    // we don't want this script to be locked by the session. It loads within tinymce but has a lot of concurrent requests
+    // and unfortunately, it loads synchronously in lib/editor/tinymce/plugins/tiny_mce_wiris/tinymce/editor_plugin_src.js
+    define('CLI_SCRIPT', true);
+    define('WEB_CRON_EMULATED_CLI', 'defined'); // ugly ugly hack, do not use elsewhere please
+//-------------------------------------------------------------------------------------------------
+//-----END CORE HACK-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 // Loaded from configuration
 require_once ('pluginbuilder.php');
 
